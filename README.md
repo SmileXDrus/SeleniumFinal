@@ -1,2 +1,2 @@
 # SeleniumFinal
-Final course project
+Final project by Selenium course 
