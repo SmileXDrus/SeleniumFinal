@@ -8,6 +8,9 @@ class LoginPageLocators(object):
     REGISTER_FROM = (By.CSS_SELECTOR, "[value = 'Register']")
 
 class ProductPageLocators(object):
-    NAME_PRODUCT = (By.CSS_SELECTOR, ".product_main > h1")
-    PRICE_PRODUCT = (By.CSS_SELECTOR, ".product_main > p.price_color")
+    NAME_PRODUCT = (By.CSS_SELECTOR, "#default")                #.product_main > h1
+    PRICE_PRODUCT = (By.CSS_SELECTOR, ".basket-mini > strong")  #.product_main > p.price_color
     BASKET_PRODUCT = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    
+    NAME_PRODUCT_PREV = (By.CSS_SELECTOR, ".product_main > h1")
+    PRICE_PRODUCT_PREV = (By.CSS_SELECTOR, ".product_main > p.price_color")

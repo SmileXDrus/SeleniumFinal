@@ -1,5 +1,6 @@
 #Базовая страница
 import math
+import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 
@@ -20,7 +21,8 @@ class BasePage(object):
         except (NoSuchElementException):
             return False
         return True
-        
+
+    
     #Считает результат математического выражения и вводит ответ
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -34,4 +36,3 @@ class BasePage(object):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-        
