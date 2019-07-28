@@ -8,13 +8,23 @@ class ProductPage(BasePage):
         basket_link = self.browser.find_element(*ProductPageLocators.BASKET_PRODUCT)
         basket_link.click()
     
-    #Общая проверка соотвествия продукта (наименование и цена)
-    def should_be_right_name_and_price(self):
-        text = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT)
-        assert  text == "Coders at Work", "MISTAKE" 
+    #Общая проверка соотвествия продукта (наименование)
+    def should_be_right_name(self):
+        textName = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT).text
+        assert  textName == "Coders at Work"
     
-        
-'''       
+	#Проверка на вывод сообщения об успехе
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be" 
+	
+	#Проверка на вывод сообщения об успехе
+    def should_not_be_success_message2(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+
+
+'''	
+#Наличие    
     #Общая проверка налиция продукта (наименование и цена)
     def should_be_name_and_price(self):
         self.should_be_name_product()
