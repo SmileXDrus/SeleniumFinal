@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
+from .locators import ProductPageLocators
 
 class BasePage(object):
     def __init__(self, browser, url, timeout=10): #Конструктор
@@ -14,6 +15,7 @@ class BasePage(object):
         self.url = url
         self.browser.implicitly_wait(timeout)
     
+    #Переход на логинку
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()

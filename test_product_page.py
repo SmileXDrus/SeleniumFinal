@@ -36,10 +36,9 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.open()
     page.go_to_login_page()
 
-#ТЕСТЫ Проверка на наличие сообщения об успехе:
 #TEST1 С добавлением в корзину (is_not_element_present)
 @pytest.mark.skip
-def test_should_be_success(browser):
+def test_should_be_success_test(browser):
     link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=0"
     page = ProductPage(browser, link) # инициализируем Page Object
     page.open()
@@ -65,6 +64,7 @@ def test_should_be_success(browser):
     page.should_not_be_success_message2()
 
 #TEST Проверка на наличие соответствие наименования товара
+@pytest.mark.skip
 def test_should_be_right_name(browser):
     link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
     page = ProductPage(browser, link) # инициализируем Page Object

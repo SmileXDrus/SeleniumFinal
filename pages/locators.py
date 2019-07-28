@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    NO_PRODUCT = (By.CSS_SELECTOR, "#content_inner > p")
 
 class LoginPageLocators(object):
     LOGIN_FORM = (By.CSS_SELECTOR, "[value = 'Log In']")
