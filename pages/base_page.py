@@ -6,15 +6,23 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import BasePageLocators
-from .locators import ProductPageLocators
+from .locators import *
 
 class BasePage(object):
     def __init__(self, browser, url, timeout=10): #Конструктор
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
-    
+        
+    #Проверка на авторизованность
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"	
+    #Открытие корзины
+    def open_busket(self):
+        link = self.browser.find_element_by_css_selector(".hidden-xs > span > a")
+        link.click() 
+		
     #Переход на логинку
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
@@ -42,6 +50,11 @@ class BasePage(object):
         except TimeoutException:
             return True
         return False
+        
+    #Переход в корзину 
+    def put_in_basket(self):
+        basket_link = self.browser.find_element(*ProductPageLocators.BASKET_PRODUCT)
+        basket_link.click()
 		
 	#Если же мы хотим проверить, что какой-то элемент исчезает
     def is_disappeared(self, how, what, timeout=4):

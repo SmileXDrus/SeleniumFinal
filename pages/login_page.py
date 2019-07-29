@@ -1,6 +1,7 @@
 #Страница с логином
 from .base_page import BasePage
-from .locators import LoginPageLocators
+from .locators import *
+import time
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -19,3 +20,9 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
         assert self.is_element_present(*LoginPageLocators.REGISTER_FROM), "Register form is not presented"
+    
+    def register_new_user(self, email, password):
+        email_el = self.browser.find_element(*BasePageLocators.EMAIL_FIELD).send_keys(email)
+        pas_el = self.browser.find_element(*BasePageLocators.REG_PAS).send_keys(password)
+        pas_el = self.browser.find_element(*BasePageLocators.REG_PAS2).send_keys(password)
+        button = self.browser.find_element_by_css_selector("button[name ='registration_submit'").click()

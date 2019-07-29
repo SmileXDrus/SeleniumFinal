@@ -4,10 +4,6 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
-    
-    def put_in_basket(self):
-        basket_link = self.browser.find_element(*ProductPageLocators.BASKET_PRODUCT)
-        basket_link.click()
         
     #Общая проверка соотвествия продукта (наименование)
     def should_be_right_name(self):
